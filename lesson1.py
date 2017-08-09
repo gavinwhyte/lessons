@@ -35,6 +35,13 @@
 # 007          5.7         Male           3           $75
 # 008          5.8         Female         8           $600
 
+# Pizza Dimension  No of Toppings     Label(Target Value - Price )
+# 6                                         7
+# 8                                         9
+# 10                                       13
+# 14                                      17.5
+
+
 
 # Data in the above set is arranged in rows and columns
 # Each row is an individual case(also called an instance, example or observation)
@@ -281,9 +288,9 @@ for col in range(ncol):
                 type[0] += 1
         except ValueError:
             if len(row[col]) > 0:
-                type[1]  += 1
+                type[1] += 1
             else:
-                type[2] +=1
+                type[2] += 1
     colcounts.append(type)
     type = [0] * 3
 
@@ -296,4 +303,3 @@ for types in colcounts:
                      '\t\t' + str(types[0]) + '\t\t' + str(types[1]) +
                      '\t\t' + str(types[2]) + "\n")
     iCol += 1
-

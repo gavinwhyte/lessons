@@ -315,7 +315,82 @@ print(catCount)
 
 # Note the upper quartile is much larger than the others.
 
-# Visulisation of outliers using quantile-quantile plot
+# Visualisation of outliers using quantile-quantile plot
+
+# One way to study outliers in  more detail is to plot the distribution of the
+# data in question relative to some resonable distribution, like plotting
+# against some percentiles of a Gaussian distribution
+
+# We use the python function probplot to help determine whehter the data has outliers.
+
+# If the data being analyzed comes from a Gaussian Distribution, the point
+# being plotted will lie on a straight line.
+
+
+
+__author__ = 'gwhyte'
+
+import urllib2
+import sys
+import numpy as np
+import pylab
+import scipy.stats as stats
+
+# read data from UCI repository
+# url "https://archive.ics.uci.edu/ml/machine-learning-databases/undocumented/connectionist-bench/sonar/sonar.all-data"
+
+
+target_url = "https://archive.ics.uci.edu/ml/machine-learning-databases" \
+             "/undocumented/connectionist-bench/sonar/sonar.all-data"
+
+data = urllib2.urlopen(target_url)
+
+
+# arrange data into a list for labels and lists of list for attributes
+
+xList =[]
+labels = []
+
+for line in data:
+    # split on comma
+    row = line.strip().split(",")
+    xList.append(row)
+
+nrow = len(xList)
+ncol = len(xList[1])
+
+type = [0]*3
+colCounts = []
+
+# generate summary statistics for column 3
+
+col = 3
+colData = []
+
+for row in xList:
+    colData.append(float(row[col]))
+
+stats.probplot(colData, dist="norm", plot=pylab)
+pylab.show()
+
+# Quantile-quantile plot of attribute 4 from the rocks versus mine data
+
+
+# So what would you do with this information
+# Outliers may cause trouble either for model building or predicition.
+# After you're trained a model ont his data set, you can look at the errors
+# your model makes and see whether the errors are correlated with the
+# outliers
+# If they are you can take steps to correct them
+# You can segregate them out and train on them as a separate class
+# You can edit them out of the data if they represent an abnormality
+# that wont be present in data you model when deployed.
+
+# A resonable process for this might be to generate quartile boundaries during the
+# exploration phase and note potential outliers to get a feel for how much of
+# a problem you might or might not have with it.
+# Then when you're evaluating performance data, use quantile-quantile (q-Q) plots
+# to determine which points to call for outliers for use in your error analysis
 
 
 

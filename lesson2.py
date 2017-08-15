@@ -1,5 +1,5 @@
 # Statistical Terminology for Model Building
-
+# 15 August 2017
 # Statistics is the branch of mathematics dealing collection, analysis,
 # interpretation, presentation and organisation of numerical data
 

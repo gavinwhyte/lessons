@@ -66,7 +66,7 @@
 # Major Differences between statistical modelling and machine Learning
 # Stats Modelling                       Machine Learning
 
-# 1.Formalisation of relationships      1. Algorithm that can learn from the
+# 1.The Formalisation of relationships      1. Algorithm that can learn from the
 # between variables in the form of      data without relying on rule based
 # mathematical equations                programming
 
@@ -103,7 +103,7 @@
 
 # 4. Train algorithm on training and validation data.
 # Post feature engineering data will be divided into three chunks
-# (Training, Validation, Test data) rather than two train and test.
+# (Training, Validation (Hold Out) , Test data) rather than two train and test.
 # Machine learning are applied on training data and the hyper-parameters
 # of the model are tuned based on validation data to avoid over-fitting.
 
@@ -112,12 +112,13 @@
 # data, its performance will be checked on unseen test data.
 # If the performance is still good we can proceed to next step.
 
-# 6. Deploy the algorithm on live streaming sata to classify the outcomes.
+# 6. Deploy the algorithm on live streaming data to classify the outcomes.
 # Eg a recommender on a web site.
 
 
 
 # Statistical fundamentals and terminology for model building and validation
+
 # The following definitions decrive various fundamentals
 
 # Population :  The is the totality, the complete list of observations
@@ -220,8 +221,8 @@ ncol = len(xList[1])
 type = [0]*3
 colCounts = []
 
-# generate summary statistics for col 3
-col = 3
+# generate summary statistics for col 5
+col = 5
 colData = []
 
 for row in xList:
@@ -364,7 +365,7 @@ colCounts = []
 
 # generate summary statistics for column 3
 
-col = 3
+col = 5
 colData = []
 
 for row in xList:

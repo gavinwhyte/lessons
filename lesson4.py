@@ -17,6 +17,7 @@ import sys
 target_url = "https://archive.ics.uci.edu/ml/machine-learning-databases" \
              "/undocumented/connectionist-bench/sonar/sonar.all-data"
 
+# Multiple Comprisons between columns
 
 rocksvsmines = pd.read_csv(target_url, header=None, prefix="V")
 
@@ -138,19 +139,18 @@ plot.xlabel("Attribute Index")
 plot.ylabel(("Quartile Ranges"))
 plot.show()
 
-# Removing is ok at times but renormalizing the variables generalizes better
-# renormalize columns to Zero Mean and unit standard devaition
+# Removing is ok at times but normalizing the variables generalizes better
+# normalize columns to Zero Mean and unit standard devaition
 # this is a common normalisation and desirable for other operations
 # (like k-means clustering or k-nearest neighbours)
 
 
 abaloneNormalised = abalone.iloc[:, 1:9]
 
-for i in range(8) :
+for i in range(8):
     mean = summary.iloc[1, i]
     sd = summary.iloc[2, i]
-
-abaloneNormalised.iloc[:, i:(i + 1)] = (abaloneNormalised.iloc[:, i:(i + 1)] - mean) / sd
+    abaloneNormalised.iloc[:, i:(i + 1)] = (abaloneNormalised.iloc[:, i:(i + 1)] - mean) / sd
 
 array3 = abaloneNormalised.values
 plot.boxplot(array3)
@@ -162,7 +162,7 @@ plot.show()
 # These plots hsow a small rectangle with a red line through it.
 # The red line marks the median value (or the 50th percentile) for the column of data
 # The to mark the 25 th percentile and the bottom the 75 th percentile
-# Above and below the box you will see small horizontal ticks, the so called wiskerts.
+# Above and below the box you will see small horizontal ticks, the so called wiskers.
 # These are draw at levels that are 1.4 times the interquartile spacing above and below
 # the box. Interquartile spacing is the difference between the 75th percentile and the 25 th
 # percentile. The space between the top of the top and the upper whisker is 1.4 times the height
